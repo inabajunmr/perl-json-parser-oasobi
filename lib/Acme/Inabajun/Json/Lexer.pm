@@ -23,8 +23,8 @@ sub next ($self) {
     $self->{index}++;
     return Acme::Inabajun::Json::Token->l_paren()   if ( $i eq '{' );
     return Acme::Inabajun::Json::Token->r_paren()   if ( $i eq '}' );
-    return Acme::Inabajun::Json::Token->l_bracket() if ( $i eq '(' );
-    return Acme::Inabajun::Json::Token->r_bracket() if ( $i eq ')' );
+    return Acme::Inabajun::Json::Token->l_bracket() if ( $i eq '[' );
+    return Acme::Inabajun::Json::Token->r_bracket() if ( $i eq ']' );
     return Acme::Inabajun::Json::Token->colon()     if ( $i eq ':' );
     return Acme::Inabajun::Json::Token->comma()     if ( $i eq ',' );
 
@@ -78,7 +78,6 @@ sub parseKeyword ($self) {
       $self->{index} = $start + $+[0];
       return Acme::Inabajun::Json::Token->keyword(substr $self->{input}, $start, $+[0]);
     }
-    # TODO
 }
 
 sub now ($self) {

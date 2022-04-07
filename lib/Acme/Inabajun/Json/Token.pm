@@ -47,6 +47,25 @@ sub keyword ($class, $value) {
     return bless { ( type => 'KEYWORD' ), value => $value }, $class;
 }
 
+sub isValue ($self) {
+    my $type = $self->{type};
+    if ($type eq 'KEYWORD' || $type eq 'NUMBER' || $type eq 'STRING') {
+        return 1;
+    }
+    return 0;
+}
+
 sub getValue ($self) {
+    if($self->{type} eq 'KEYWORD') {
+        if($self->{value} eq 'true') {
+            return 1;
+        }
+        if($self->{value} eq 'false') {
+            return 0;
+        }
+        if($self->{value} eq 'null') {
+            return undef;
+        }
+    }
     return $self->{value};
 }

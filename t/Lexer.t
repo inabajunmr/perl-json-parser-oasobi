@@ -24,15 +24,15 @@ subtest 'new' => sub {
 
 subtest 'next' => sub {
     subtest 'meta tokens' => sub {
-        subtest '{}():,' => sub {
-            my $l = Acme::Inabajun::Json::Lexer->new('{}():,');
+        subtest '{}[]:,' => sub {
+            my $l = Acme::Inabajun::Json::Lexer->new('{}[]:,');
             is( $l->next()->{type}, 'LPAREN',   'first token is {' );
             is( $l->{index},        1,          'index incremented to 1' );
             is( $l->next()->{type}, 'RPAREN',   'second token is }' );
             is( $l->{index},        2,          'index incremented to 2' );
-            is( $l->next()->{type}, 'LBRACKET', 'third token is (' );
+            is( $l->next()->{type}, 'LBRACKET', 'third token is [' );
             is( $l->{index},        3,          'index incremented to 3' );
-            is( $l->next()->{type}, 'RBRACKET', 'third token is )' );
+            is( $l->next()->{type}, 'RBRACKET', 'third token is ]' );
             is( $l->{index},        4,          'index incremented to 4' );
             is( $l->next()->{type}, 'COLON',    'third token is :' );
             is( $l->{index},        5,          'index incremented to 5' );
@@ -41,8 +41,8 @@ subtest 'next' => sub {
             is( $l->next()->{type}, 'EOF',
                 'this string has only 3 charactors' );
         };
-        subtest "  {  }  \n ( \t)  " => sub {
-            my $l = Acme::Inabajun::Json::Lexer->new("  {  }  \n ( \t)  ");
+        subtest "  {  }  \n [ \t]  " => sub {
+            my $l = Acme::Inabajun::Json::Lexer->new("  {  }  \n [ \t]  ");
             is( $l->next()->{type}, 'LPAREN',   '1:{' );
             is( $l->next()->{type}, 'RPAREN',   '2:}' );
             is( $l->next()->{type}, 'LBRACKET', '3:(' );
