@@ -1,0 +1,18 @@
+Build.PL
+Changes
+lib/Acme/Inabajun/Json/Lexer.pm
+lib/Acme/Inabajun/Json/Parser.pm
+lib/Acme/Inabajun/Json/Parser.pod
+lib/Acme/Inabajun/Json/Token.pm
+LICENSE
+Makefile.PL
+MANIFEST			This list of files
+README
+README.md
+t/00-load.t
+t/Lexer.t
+t/manifest.t
+t/Parser.t
+t/pod-coverage.t
+t/pod.t
+xt/boilerplate.t
